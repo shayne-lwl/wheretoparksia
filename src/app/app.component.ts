@@ -1,13 +1,13 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ThemeToggle } from './components/theme-toggle/theme-toggle.component';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NavigationBar } from './components/navigation-bar/navigation-bar.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  imports: [RouterOutlet, ThemeToggle],
+  imports: [RouterOutlet, NavigationBar],
 })
 export class AppComponent implements OnInit {
   public matIconRegistry: MatIconRegistry = inject(MatIconRegistry);

@@ -1,37 +1,56 @@
 .theme-toggle-container {
-  width: 80px;
-  height: 40px;
-  padding: 5px;
   border-radius: 999px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   position: relative;
+  background-color: #1a1a1d;
   transition: background-color 0.3s ease-in-out;
-}
-
-.circle {
-  width: 30px;
-  height: 30px;
-  border-radius: 99px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  left: 10px;
-  transition: left 0.3s ease-in-out;
+  position: relative;
 }
 
-.circle.dark {
-  left: calc(100% - 40px);
+.sun,
+.moon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out,
+    width 0.3s ease-in-out, height 0.3s ease-in-out;
 }
 
 .sun {
-  width: 20px;
-  height: 20px;
+  width: 35px;
+  height: 35px;
   color: #e9b63b;
+  opacity: 1;
+}
+
+.sun:hover {
+  width: 40px;
+  height: 40px;
+}
+
+.sun.dark {
+  transform: translate(-50%, 0%);
+  opacity: 0;
 }
 
 .moon {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   color: whitesmoke;
+  transform: translate(-50%, 0%);
+  opacity: 0;
+}
+
+.moon:hover {
+  width: 30px;
+  height: 30px;
+}
+
+.moon.dark {
+  transform: translate(-50%, -50%);
+  opacity: 1;
 }

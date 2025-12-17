@@ -1,11 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  signal,
-  viewChild,
-  effect,
-} from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { ThemeToggleService } from '../../services/theme-toggle.service';
@@ -18,21 +11,15 @@ import { ThemeToggleService } from '../../services/theme-toggle.service';
 })
 export class ThemeToggle implements OnInit {
   themeState = signal<'light' | 'dark'>('light');
-  toggleButton = viewChild<ElementRef>('toggleButton');
 
   constructor(private themeToggleService: ThemeToggleService) {}
 
   ngOnInit(): void {}
 
   toggleTheme(): void {
-    if (this.themeState() === 'light') {
-      this.themeState.set('dark');
-      this.toggleButton()?.nativeElement.classList.add('dark');
-      this.themeToggleService.toggle();
-    } else {
-      this.toggleButton()?.nativeElement.classList.remove('dark');
-      this.themeState.set('light');
-      this.themeToggleService.toggle();
-    }
+    // keep state changes declarative; template binds classes to icons
+    const next = this.themeState() === 'light' ? 'dark' : 'light';
+    this.themeState.set(next);
+    this.themeToggleService.toggle();
   }
 }

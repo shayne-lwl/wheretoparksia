@@ -20,7 +20,6 @@ export class ThemeToggleService implements OnInit {
 
   setDarkMode(enabled: boolean): void {
     if (enabled) {
-      console.log('enabling dark mode');
       this.renderer.addClass(this.root, 'dark');
     } else {
       this.renderer.removeClass(this.root, 'dark');
