@@ -1,6 +1,8 @@
 @use "_theme.scss" as theme;
 @use "sass:map";
 @use "@angular/material" as mat;
+@use "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
 $primary-palette: theme.$primary-palette;
 $tertiary-palette: theme.$tertiary-palette;
@@ -19,7 +21,7 @@ html {
   );
 }
 
-html.dark-theme {
+html.dark {
   @include mat.theme(
     (
       color: (
@@ -40,7 +42,7 @@ body {
 }
 
 body {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Nunito";
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
 }

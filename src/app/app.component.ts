@@ -1,7 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { ThemeToggle } from './components/theme-toggle/theme-toggle.component';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
-  template: '<h1>Hello World</h1>',
+  templateUrl: './app.component.html',
+  imports: [RouterOutlet, ThemeToggle],
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  public matIconRegistry: MatIconRegistry = inject(MatIconRegistry);
+  public domSanitizer: DomSanitizer = inject(DomSanitizer);
+
+  constructor() {}
+
+  ngOnInit() {
+    this.matIconRegistry.addSvgIconSetInNamespace(
+      'hero-solid',
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        '/assets/icons/hero-icons-solid.svg'
+      )
+    );
+  }
+}

@@ -1,0 +1,24 @@
+<div
+  class="theme-toggle-container"
+  [ngClass]="themeState() === 'light' ? 'bg-blue-50' : 'bg-[#37353E]'"
+>
+  <div class="circle" #toggleButton>
+    @if(themeState() === 'light'){
+    <button
+      mat-icon-button
+      class="flex items-center justify-center"
+      (click)="toggleTheme()"
+    >
+      <mat-icon class="sun" [svgIcon]="'hero-solid:sun'"></mat-icon>
+    </button>
+    } @else {
+    <button
+      mat-icon-button
+      class="flex items-center justify-center"
+      (click)="toggleTheme()"
+    >
+      <mat-icon class="moon" [svgIcon]="'hero-solid:moon'"></mat-icon>
+    </button>
+    }
+  </div>
+</div>
